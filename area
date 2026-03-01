@@ -1,0 +1,25 @@
+index.ts
+function area(data: { length?: number; breadth?: number; height?: number }) {
+  return (data.length ?? 0) * (data.breadth ?? 0);
+}
+
+console.log(area({ length: 4, breadth: 3 }));
+
+
+
+index.html
+<html>
+
+<head>
+	<title>Parcel1 Sandbox</title>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+	<div id="app"></div>
+
+	<script src="src/index.ts">
+	</script>
+</body>
+
+</html>
