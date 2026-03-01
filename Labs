@@ -1,0 +1,275 @@
+index.html
+<html>
+  <head>
+    <title>Parcel1 Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script src="src/Lab14.ts"></script>
+  </body>
+</html>
+
+
+
+function greetUser(name: string, title: string = "Mr./Ms."): string {
+  return `Hello, ${title} ${name}!`;
+}
+console.log(greetUser("Sashi"));
+console.log(greetUser("Sashi", "Dr."));
+
+type Operation = (a: number, b: number) => number;
+
+const add: Operation = (a, b) => a + b;
+const multiply: Operation = (a, b) => a * b;
+
+console.log(add(5, 3));
+console.log(multiply(5, 3));
+
+
+
+function calculateSquare(num: number): number {
+  return num * num;
+}
+function isEven(num: number): boolean {
+  return num % 2 === 0;
+}
+console.log(calculateSquare(5));
+console.log(isEven(4));
+console.log(isEven(7));
+
+
+
+
+function greetUser(name: string, title?: string): string {
+  if (title) {
+    return `Hello, ${title} ${name}!`;
+  } else {
+    return `Hello, ${name}!`;
+  }
+}
+console.log(greetUser("Sashi"));
+console.log(greetUser("Sashi", "Dr."));
+
+
+
+
+type Point = {
+  x: number;
+  y: number;
+};
+function printPoint(point: Point): void {
+  console.log("X value:", point.x);
+  console.log("Y value:", point.y);
+}
+printPoint({ x: 5, y: 10 });
+
+
+
+// Literal Types
+function move(direction: "up" | "down" | "left" | "right"): void {
+  console.log("Moving " + direction);
+}
+
+function formatValue(value: string | number): void {
+  if (typeof value === "string") {
+    console.log(value.toUpperCase());
+  } else {
+    console.log(Math.round(value));
+  }
+}
+
+move("up");
+move("right");
+
+formatValue("typescript");
+formatValue(6.3);
+
+
+
+
+interface User {
+  readonly id: number;
+  name: string;
+  age?: number;
+}
+
+const user: User = {
+  id: 101,
+  name: "Sashi",
+  age: 21,
+};
+
+console.log("User ID:", user.id);
+console.log("User Name:", user.name);
+console.log("User Age:", user.age);
+
+interface Calculator {
+  add(a: number, b: number): number;
+  multiply(a: number, b: number): number;
+}
+
+const calculator: Calculator = {
+  add(a, b) {
+    return a + b;
+  },
+  multiply(a, b) {
+    return a * b;
+  },
+};
+
+console.log("........Functions.........");
+console.log("Addition:", calculator.add(5, 3));
+console.log("Multiplication:", calculator.multiply(5, 3));
+
+
+
+
+interface Student {
+  name: string;
+  marks: number;
+}
+
+interface StudentList {
+  students: Student[];
+}
+
+const students: StudentList = {
+  students: [
+    { name: "Sashi", marks: 85 },
+    { name: "Mythri", marks: 92 },
+    { name: "Humera", marks: 88 },
+  ],
+};
+
+students.students.forEach((student) => {
+  console.log(`Name: ${student.name}, Marks: ${student.marks}`);
+});
+
+type PointType = {
+  x: number;
+  y: number;
+};
+
+interface PointInterface {
+  x: number;
+  y: number;
+}
+
+function printPoint(point: PointType | PointInterface): void {
+  console.log(`X: ${point.x}, Y: ${point.y}`);
+}
+
+printPoint({ x: 10, y: 20 });
+printPoint({ x: 5, y: 15 });
+
+
+
+
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+enum Status {
+  PENDING = "PENDING",
+  SUCCESS = "SUCCESS",
+  FAILED = "FAILED",
+}
+
+function printStatusOrDirection(value: Direction | Status): void {
+  console.log("Value:", value);
+}
+
+const move: Direction = Direction.Left;
+const currentStatus: Status = Status.SUCCESS;
+
+printStatusOrDirection(move);
+printStatusOrDirection(currentStatus);
+
+function printInputValue(): void {
+  const inputElement = document.getElementById("username") as HTMLInputElement;
+  console.log("Username:", inputElement.value);
+}
+
+
+
+
+class Student {
+  public name: string;
+  public age: number;
+  private rollNo: number;
+
+  constructor(name: string, age: number, rollNo: number) {
+    this.name = name;
+    this.age = age;
+    this.rollNo = rollNo;
+  }
+
+  showRollNo(): void {
+    console.log("Roll No:", this.rollNo);
+  }
+}
+
+const student1 = new Student("Sashi", 21, 101);
+
+console.log("Name:", student1.name);
+console.log("Age:", student1.age);
+
+student1.showRollNo();
+
+
+
+
+class Student {
+  readonly id: number;
+  name: string;
+
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+}
+
+const student1 = new Student(1, "Sashi");
+
+console.log("Student ID:", student1.id);
+console.log("Student Name:", student1.name);
+console.log("\n---------------------\n");
+
+class Animal {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  makeSound(): void {
+    console.log("Animal makes a sound");
+  }
+}
+
+class Dog extends Animal {
+  breed: string;
+
+  constructor(name: string, breed: string) {
+    super(name);
+    this.breed = breed;
+  }
+
+  makeSound(): void {
+    console.log("Woof! Woof!");
+  }
+}
+
+const animal1 = new Animal("Generic Animal");
+animal1.makeSound();
+
+const dog1 = new Dog("Buddy", "Labrador");
+dog1.makeSound();
+console.log("Dog Name:", dog1.name);
+console.log("Dog Breed:", dog1.breed);
+
