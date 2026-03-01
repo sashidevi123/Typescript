@@ -1,0 +1,60 @@
+App.tsx
+
+import Message from "./Message";
+
+function App() {
+  const isLoggedIn = false;
+
+  return (
+    <div>
+      <h1>Hey user did you signed in?</h1>
+      <Message isLoggedIn={isLoggedIn} />
+    </div>
+  );
+}
+
+export default App;
+
+
+
+index.tsx
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+const rootElement = document.getElementById("root")!;
+const root = ReactDOM.createRoot(rootElement);
+
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+
+Message.tsx
+
+type MessageProps = {
+  isLoggedIn: boolean;
+};
+
+function Message({ isLoggedIn }: MessageProps) {
+  if (isLoggedIn) {
+    return <h2>Welcome User!</h2>;
+  } else {
+    return <h2>Please sign in</h2>;
+  }
+}
+
+export default Message;
+
+
+
+style.css
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
