@@ -1,0 +1,212 @@
+App.tsx
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Contact from "./pages/Contact";
+
+const App: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
+};
+export default App;
+
+
+
+index.tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+const rootElement = document.getElementById("root")!;
+const root = ReactDOM.createRoot(rootElement);
+
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+
+main.tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+
+
+style.css
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+
+
+components
+Footer.tsx
+import "./Footer.css";
+const Footer: React.FC = () => {
+  return (
+    <footer className="footer">
+      <p>© 2026 My Project</p>
+      <p>
+        <a href="#">Instagram</a> | <a href="#">LinkedIn</a>
+      </p>
+    </footer>
+  );
+};
+
+export default Footer;
+
+
+
+Footer.css
+.footer {
+  margin-top: 40px;
+  padding: 15px;
+  text-align: center;
+  background-color: #e5dbe1;
+}
+
+
+
+
+Navbar.tsx
+import { Link } from "react-router-dom";
+import "./Navbar.css";
+
+const Navbar: React.FC = () => {
+  return (
+    <div className="navbar">
+      <h1 className="logo">My Project</h1>
+
+      <div className="nav-links">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact Us</a>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
+
+
+
+Navbar.css
+.navbar {
+  display: flex;
+  gap: 25px; /* space between links */
+  padding: 15px;
+  background-color: rgb(35, 191, 35);
+
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-links {
+  margin-left: auto; /* pushes links to the right */
+  display: flex;
+  gap: 25px;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1b2bbb;
+}
+
+.navbar a:hover {
+  color: rgb(30, 30, 160);
+}
+
+
+
+
+pages
+Home.tsx
+const Home: React.FC = () => {
+  return (
+    <div className="page">
+      <h1>
+        <center>Welcome to Our Website</center>
+        <br></br>
+      </h1>
+      <h2>explore the importance of the Web and UI/UX development</h2>
+      <img src="https://www.dreamsoft4u.com/wp-content/uploads/2022/07/Importance-of-UI-UX-design-in-Web-Development-A-Complete-Guide-Banner.jpg" />
+    </div>
+  );
+};
+
+export default Home;
+
+
+
+
+contact.tsx
+const Contact = () => (
+  <form
+    onSubmit={(e) => {
+      e.preventDefault();
+      alert("Submitted");
+    }}
+  >
+    <input placeholder="Name" />
+
+    <br></br>
+    <input placeholder="Email" />
+    <br></br>
+    <button>Submit</button>
+  </form>
+);
+
+export default Contact;
+
+
+
+Service.tsx
+const Services: React.FC = () => {
+  return (
+    <div className="page">
+      <h1>Services of the different Developments</h1>
+      <ul>
+        <li>
+          <h2>Web Development</h2>
+        </li>
+        <img src="https://www.4cpl.tech/ast/uploads/2023/06/Web-Development.jpg" />
+        <br></br>
+        <li>
+          <h2>Mobile App Development</h2>
+        </li>
+        <img src="https://riseuplabs.com/wp-content/uploads/2021/07/mobile-application-development-guidelines-riseuplabs.jpg" />
+        <br></br>
+        <li>
+          <h2>UI/UX Design</h2>
+        </li>
+        <img src="https://www.sphinx-solution.com/blog/wp-content/uploads/2023/01/ux-services.webp" />
+      </ul>
+    </div>
+  );
+};
+
+export default Services;
